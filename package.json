@@ -1,0 +1,42 @@
+{
+  "name": "siri",
+  "version": "1.0.0",
+  "description": "Asistente estilo Siri para Windows hecho con Electron",
+  "author": "Tu Nombre",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "dependencies": {
+    "dist": "^0.1.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.tuempresa.siriwindows",
+    "productName": "Siri Windows",
+    "files": [
+      "main.js",
+      "config.js",
+      "preload.js",
+      "renderer.js",
+      "index.html",
+      "styles.css",
+      "spellcheck.js",
+      "database.js",
+      "assets/**/*"
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": "portable",
+      "icon": "assets/siri.ico"
+    }
+  }
+}

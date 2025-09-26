@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siri Windows</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Efecto de desenfoque y brillo en los bordes -->
+    <div class="background-effect"></div>
+    
+    <!-- Contenedor principal de Siri -->
+    <div class="siri-container">
+        <!-- Loader de Siri -->
+        <div class="siri-loader">
+            <div class="rainbow-container">
+                <div class="green"></div>
+                <div class="pink"></div>
+                <div class="blue"></div>
+            </div>
+        </div>
+        
+        <!-- Área de interacción -->
+        <div class="interaction-area">
+            <div class="question-display">
+                <p id="question-text">Hola Jorge, ¿en que puedo ayudarte?</p>
+            </div>
+            <div class="response-display">
+                <p id="response-text"></p>
+            </div>
+            <div class="input-area">
+                <input type="text" id="text-input" placeholder="Escribe tu pregunta aquí...">
+                <button id="send-button">Enviar</button>
+                <button id="btn-microfono">🎤 Hablar</button>
+            </div>
+        </div>
+        
+        <!-- Indicador de escucha -->
+        <div class="listening-indicator">
+            <div class="pulse-ring"></div>
+            <p>Escuchando...</p>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <p>
+            <div class="reference">Creador Jorge Lopez <a href="https://dribbble.com/shots/3546148-Apple-iOS11-Siri-visual-effect-motion" target="_blank"></a></div>
+        </p>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

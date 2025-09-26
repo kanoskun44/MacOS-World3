@@ -1,0 +1,324 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: transparent;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: background 0.3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Efecto de fondo con desenfoque y brillo en bordes */
+.background-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1000%;
+    height: 1000%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(80px);
+    z-index: -20;
+    display: none;
+}
+
+.background-effect::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, #ff0080, #00ff88, #0080ff, #8000ff);
+    background-size: 400% 400%;
+    animation: border-glow 3s ease infinite;
+    z-index: -1;
+    border-radius: 20px;
+    opacity: 0.7;
+    filter: blur(20px);
+    pointer-events: none;
+}
+
+@keyframes border-glow {
+    0% { background-position: 0% 50%; opacity: 0.7; }
+    50% { background-position: 100% 50%; opacity: 1; }
+    100% { background-position: 0% 50%; opacity: 0.7; }
+}
+
+/* Contenedor principal de Siri */
+.siri-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Loader de Siri */
+.siri-loader {
+    margin-bottom: 30px;
+}
+
+.rainbow-container {
+    z-index: 1;
+    transform: rotate(0deg) translateZ(0);
+    transform-origin: center center;
+    width: 1em;
+    height: 1em;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    animation: rainbow 3s infinite linear;
+    border-radius: .5em;
+    box-shadow: 0 0 0.3em 0.05em #2c116e, inset 0.03em 0 0.1em 0.02em #de66e4;
+    transform-style: preserve-3d;
+    perspective: 1em;
+    font-size: 20vmin;
+}
+
+@keyframes rainbow {
+    0% {
+        transform: rotate(0deg) translateZ(0);
+        box-shadow: 0 0 0.3em 0.05em #2c116e, inset 0.03em 0 0.1em 0.02em #de66e4;
+    }
+    25% {
+        transform: rotate(90deg) translateZ(0);
+        box-shadow: 0 0 0.3em 0.05em #28126a, inset 0.03em 0 0.1em 0.02em #34ceaa;
+    }
+    50% {
+        transform: rotate(180deg) translateZ(0);
+        box-shadow: 0 0 0.3em 0.05em #28126a, inset 0.03em 0 0.1em 0.02em #19b3f5;
+    }
+    75% {
+        transform: rotate(270deg) translateZ(0);
+        box-shadow: 0 0 0.3em 0.05em #28126a, inset 0.03em 0 0.1em 0.02em #3d52ac;
+    }
+    100% {
+        transform: rotate(360deg) translateZ(0);
+        box-shadow: 0 0 0.3em 0.05em #28126a, inset 0.03em 0 0.1em 0.02em #de66e4;
+    }
+}
+
+.rainbow-container {
+    position: relative;
+}
+
+.rainbow-container > div {
+    position: absolute;
+    top: .1em;
+    left: .1em;
+    width: .8em;
+    height: .8em;
+    border-radius: 50%;
+}
+
+.green {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 0%, #0071bc 100%);
+    transform: rotateY(0) skew(15deg) rotate3d(1.1, 1, 0.9, 0);
+    animation: curve-rotate-green 50s infinite linear;
+}
+
+.pink {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 0%, #ed1e79 100%);
+    transform: rotateY(180deg) skew(15deg) rotate3d(1.1, 1, 0.9, 0);
+    animation: curve-rotate-pink 50s infinite linear;
+}
+
+.blue {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 0%, #00a2ff 100%);
+    transform: rotateY(90deg) skew(15deg) rotate3d(1.1, 1, 0.9, 0);
+    animation: curve-rotate-blue 50s infinite linear;
+}
+
+@keyframes curve-rotate-green {
+    0% { transform: rotateY(0) skew(15deg) rotate3d(1.1, 1, 0.9, 0deg); }
+    100% { transform: rotateY(0) skew(15deg) rotate3d(1.1, 1, 0.9, 360deg); }
+}
+
+@keyframes curve-rotate-pink {
+    0% { transform: rotateY(180deg) skew(15deg) rotate3d(1.1, 1, 0.9, 0deg); }
+    100% { transform: rotateY(180deg) skew(15deg) rotate3d(1.1, 1, 0.9, 360deg); }
+}
+
+@keyframes curve-rotate-blue {
+    0% { transform: rotateY(90deg) skew(15deg) rotate3d(1.1, 1, 0.9, 0deg); }
+    100% { transform: rotateY(90deg) skew(15deg) rotate3d(1.1, 1, 0.9, 360deg); }
+}
+
+/* Área de interacción */
+.interaction-area {
+    text-align: center;
+    color: white;
+    max-width: 500px;
+    width: 100%;
+}
+
+.question-display, .response-display {
+    margin: 20px 0;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#question-text, #response-text {
+    font-size: 18px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#text-input {
+    flex: 1;
+    max-width: 300px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+#text-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#voice-button.voice-active {
+    background: rgba(255, 0, 0, 0.5);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Indicador de escucha */
+.listening-indicator {
+    display: none;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+}
+
+.pulse-ring {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: pulse-ring 1.5s ease-out infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    font-size: 12px;
+    font-style: italic;
+    color: white;
+}
+
+.footer a {
+    color: white;
+}
+
+/* Estados de la aplicación */
+body.siri-active .background-effect {
+    display: block;
+}
+
+body.listening .listening-indicator {
+    display: block;
+}
+
+body.listening .rainbow-container {
+    animation-duration: 1s;
+}
+
+/* Agregar al final del CSS existente */
+
+.music-recognition-indicator {
+    font-size: 24px;
+    margin: 20px 0;
+    animation: pulse 1.5s infinite;
+}
+
+.music-result {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    backdrop-filter: blur(10px);
+}
+
+.music-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #1DB954; /* Verde Spotify */
+}
+
+.music-artist {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.music-album {
+    font-size: 12px;
+    color: #999;
+    font-style: italic;
+}
+
+/* Animación para reconocimiento de música */
+@keyframes music-pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.music-recognition-active {
+    animation: music-pulse 2s infinite;
+}
